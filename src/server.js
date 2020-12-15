@@ -12,7 +12,7 @@ const {
 } = require("./errorHandling");
 
 const hostname = "localhost";
-const port = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3001;
 const publicImageFile = join(__dirname, "../public/img/products");
 const server = express();
 // server.use(cors());
@@ -39,10 +39,10 @@ server.use(catchAllHandler);
 
 console.log(listEndpoints(server));
 
-server.listen(port, hostname, () => {
+server.listen(PORT, hostname, () => {
   if (process.env.NODE_ENV === "production") {
-    console.log(`Server is running in cloud on port ${port}`);
+    console.log(`Server is running in cloud on PORT ${PORT}`);
   } else {
-    console.log(`Server running at http://${hostname}:${port}/`);
+    console.log(`Server running at http://${hostname}:${PORT}/`);
   }
 });
