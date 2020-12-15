@@ -15,8 +15,16 @@ const hostname = "localhost";
 const port = process.env.PORT || 3001;
 const publicImageFile = join(__dirname, "../public/img/products");
 const server = express();
-server.use(cors());
-// server.use(cors({ origin: process.env.NODE_ENV === "production" ? process.env.FE_URL_PROD : process.env.FE_URL_DEV })); this only accepts this url to access the server/backend
+// server.use(cors());
+server.use(
+  cors({
+    origin:
+      process.env.NODE_ENV === "production"
+        ? process.env.FE_URL_PROD
+        : process.env.FE_URL_DEV,
+  })
+);
+// this only accepts this url to access the server/backend
 server.use(express.json());
 server.use(express.static(publicImageFile));
 server.use("/products", products);
